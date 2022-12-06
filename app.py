@@ -1,14 +1,14 @@
-from flask import Flask
+from flask import Flask, request, url_for, redirect, abort
 from markupsafe import escape
-from flask import url_for
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
 @app.route('/hello')
 def hello():
-    return '<h1>Welcome to My Watchlist!</h1><img src="http://helloflask.com/totoro.gif">'
+    name = request.args.get('name','Flask')
+    return '<h1>Welcome %s! !</h1><img src="http://helloflask.com/totoro.gif">' % name
 
 @app.route('/user/<name>')
 def user_page(name):
@@ -25,3 +25,24 @@ def test_url_for():
     # 下面这个调用传入了多余的关键字参数，它们会被作为查询字符串附加到 URL 后面。
     print(url_for('test_url_for', num=2))  # 输出：/test?num=2
     return 'Test page'    
+
+@app.route('/goback/<int:year>')
+def go_back(year):
+    return '<p>Welcome to %d!</p>' % (2022-year)
+
+colors=['blue', 'red', 'white']
+@app.route('/colors/<any(%s):color>' % str(colors)[1:-1])
+def three_colors(color):
+    return '<p>Love is patient and kind. Love is not jealous or boastful or proud or rude.</p>'
+
+@app.route('/redirectTest1')
+def redirect_test1():
+    return redirect('http://www.example.com')
+
+@app.route('/redirectTest2')
+def redirect_test2():
+    return redirect(url_for('hello'))
+
+@app.route('/404')
+def not_found():
+    abort(404)
