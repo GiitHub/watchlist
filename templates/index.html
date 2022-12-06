@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ name }}'s watchlist</title>
+    </head>
+    <body>
+        <h2>{{ name }}'s watchlist</h2>
+        <p>{{ movies|length }} Titles</p>
+        <ul>
+            {% for movie in movies %}
+            <li>{{ movie.title }} - {{ movie.year }}</li>
+            {% endfor %}
+        </ul>
+        <footer>
+            <small>&copy; 2022 </small>
+        </footer>
+    </body>
+</html>
