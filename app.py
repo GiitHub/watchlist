@@ -17,6 +17,7 @@ else:
     prefix = 'sqlite:////'
 app.config['SQLALCHEMY_DATABASE_URI'] = prefix + os.path.join(app.root_path, 'data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'dev'
 # 在扩展类实例化前加载配置
 db = SQLAlchemy(app)
 
@@ -106,7 +107,7 @@ def admin(username, password):
     click.echo('Done.')
 
 
-app.config['SECRET_KEY'] = 'dev'
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
