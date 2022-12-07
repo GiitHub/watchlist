@@ -13,9 +13,19 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    user = User.query.first()
     movies = Movie.query.all()
-    return render_template('index.html', user=user, movies=movies)
+    return render_template('index.html', movies=movies)
+
+@app.errorhandler(404) # 传入错误代码
+def page_not_found(e): # 接受异常对象作为参数
+    return render_template('404.html'), 404
+
+# 对于多个模板内都需要使用的变量，我们可以使用 app.context_processor 装饰器注册一个模板上下文处理函数
+@app.context_processor
+def inject_user():
+    user = User.query.first()
+    return dict(user=user)
+
 
 
 
