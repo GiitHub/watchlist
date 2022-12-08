@@ -1,15 +1,18 @@
-certifi @ file:///C:/b/abs_ac29jvt43w/croot/certifi_1665076682579/work/certifi
-click @ file:///C:/ci/click_1646056762388/work
-colorama @ file:///C:/Windows/TEMP/abs_9439aeb1-0254-449a-96f7-33ab5eb17fc8apleb4yn/croots/recipe/colorama_1657009099097/work
+certifi==2022.9.24
+click==8.0.4
+colorama==0.4.5
 coverage==6.5.0
 Flask==2.2.2
 Flask-Login==0.6.2
 Flask-SQLAlchemy==3.0.2
 greenlet==2.0.1
-itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
-Jinja2 @ file:///C:/b/abs_7cdis66kl9/croot/jinja2_1666908141852/work
-MarkupSafe @ file:///C:/ci/markupsafe_1654508036328/work
+itsdangerous==2.0.1
+Jinja2==3.1.2
+MarkupSafe==2.1.1
+pip==22.2.2
 python-dotenv==0.21.0
+setuptools==65.5.0
 SQLAlchemy==1.4.44
 Werkzeug==2.2.2
+wheel==0.37.1
 wincertstore==0.2
